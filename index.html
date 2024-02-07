@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <link type="image/x-icon" href="favicon.png" rel="shortcut icon">
+    <title>Список дел</title>
+</head>
+<body>
+    <div class="head">
+        <div class="title">Список дел</div>
+
+        <div class="add-task">
+            <input type="text" id="taskInput">
+            <button onclick="addTask()">Добавить</button>
+            <button onclick="delTask()">Очистить все</button>
+        </div>
+    </div>
+
+    <div class="body">
+        <ol id="taskList">
+            <li><input type="checkbox" onclick="toggleTask(this)">Полить картошку<i><sub> от 01.03.2013</sub></i>
+                <button class="delete" onclick="deleteTask(this)">❌</button>
+
+            <li><input type="checkbox" onclick="toggleTask(this)">Покормить кошку<i><sub> от 11.09.2005</sub></i>
+                <button class="delete" onclick="deleteTask(this)">❌</button>
+
+            <li><input type="checkbox" onclick="toggleTask(this)">Полизать понарошку<i><sub> от 07.02.2024</sub></i>
+                <button class="delete" onclick="deleteTask(this)">❌</button>
+        </ol>
+    </div>
+    
+    <script src="script.js"></script>
+</body>
+<footer>
+    <hr>
+    <p> Copyright &copy;</p>
+</footer>
+</html>
