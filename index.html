@@ -13,28 +13,28 @@
 
         <div class="add-task">
             <input type="text" id="taskInput">
-            <button onclick="addTask()">Добавить</button>
-            <button onclick="delTask()">Очистить все</button>
+            <button class="addNew" onclick="addTask()">Добавить</button>
+            <button class="cleanAll" onclick="delAllTask()">Очистить все</button>
         </div>
     </div>
 
     <div class="body">
-        <ol id="taskList">
-            <li><input type="checkbox" onclick="toggleTask(this)">Полить картошку<i><sub> от 01.03.2013</sub></i>
-                <button class="delete" onclick="deleteTask(this)">❌</button>
-
-            <li><input type="checkbox" onclick="toggleTask(this)">Покормить кошку<i><sub> от 11.09.2005</sub></i>
-                <button class="delete" onclick="deleteTask(this)">❌</button>
-
-            <li><input type="checkbox" onclick="toggleTask(this)">Полизать понарошку<i><sub> от 07.02.2024</sub></i>
-                <button class="delete" onclick="deleteTask(this)">❌</button>
-        </ol>
+        <div class="task">
+            <ol id="taskList">
+                <li>
+                    <button class="complete" onclick="toggleTask(this)">✓</button>
+                    <span class="task-text">Полить картошку</span>
+                    <span class="task-date"><sub> от 01.03.2013</sub></span>
+                    <button class="delete" onclick="delCurTask(this)">✖️</button>
+                </li>
+            </ol>
+        </div>
     </div>
     
     <script src="script.js"></script>
 </body>
 <footer>
     <hr>
-    <p> Copyright &copy;</p>
+    <center>Copyright &copy;</center>
 </footer>
 </html>
