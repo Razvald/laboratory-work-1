@@ -38,7 +38,7 @@ function toggleTask(button) {
 }
 
 function delCurTask(button) {
-    let task = button.parentElement;
+    let task = button.parentElement.parentElement;
     task.remove();
 }
 
