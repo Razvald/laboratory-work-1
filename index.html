@@ -20,13 +20,25 @@
             <input type="text" id="taskInput">
             <button class="addNew" onclick="addTask()">Добавить</button>
             <button class="cleanAll" onclick="delAllTask()">Очистить все</button>
+            <select id="sortOptions" onchange="sortTasks()">
+                <option value="newest">Самое новое</option>
+                <option value="oldest">Самое старое</option>
+                <option value="az">А-Я</option>
+                <option value="za">Я-А</option>
+            </select>
+        </div>
+        
+        <div class="filters">
+            <a href="#" class="filter-link" onclick="filterTasks('all')">Все</a>
+            <a href="#" class="filter-link" onclick="filterTasks('completed-bg')">Сделанные</a>
+            <a href="#" class="filter-link" onclick="filterTasks('uncompleted')">Не сделанные</a>
         </div>
     </div>
 
     <div class="body">
         <div class="task">
             <ol id="taskList">
-                <li>
+                <!-- <li>
                     <div>
                         <button class="complete" onclick="toggleTask(this)"></button>
                     </div>
@@ -37,12 +49,13 @@
                     <div>
                         <button class="delete" onclick="delCurTask(this)"></button>
                     </div>
-                </li>
+                </li> -->
             </ol>
         </div>
     </div>
 
     <script src="script.js"></script>
+    <script src="taskManager.js"></script>
 </body>
 <footer>
     <hr>

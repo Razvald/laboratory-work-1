@@ -12,23 +12,7 @@ body {
     text-align: center;
     padding-bottom: 50px;
     /* Высота футера */
-
-    /*
-    background-image: url('/gitHub/workList/qwerty.jpg');
-    background-repeat: no-repeat;
-    background-position: center center;
-    background-attachment: fixed;
-    -webkit-background-size: cover;
-    -moz-background-size: cover;
-    -o-background-size: cover;
-    background-size: cover;*/
 }
-
-/*@media (max-width: 768px) {
-    body {
-        background-image: url('/gitHub/workList/йцук.jpg');
-    }
-}*/
 
 footer {
     position: fixed;
@@ -119,6 +103,26 @@ footer {
     border: none;
 }
 
+.filters {
+    margin-top: 20px;
+}
+
+.filter-link {
+    display: inline-block;
+    margin-right: 10px;
+    padding: 5px 10px;
+    border-radius: 5px;
+    background-color: #eee;
+    color: #333;
+    text-decoration: none;
+    transition: background-color 0.3s ease;
+}
+
+.filter-link:hover {
+    background-color: #ddd;
+}
+
+
 #taskList {
     list-style-type: none;
     padding: 0;
@@ -170,6 +174,15 @@ button.cleanAll {
 
 button.addNew {
     background: #d8d8d8;
+}
+
+/* Общие стили для select */
+select {
+    font-size: 20px;
+    padding: 9px;
+    border: 1px solid #ccc;
+    background-color: #fff;
+    color: #333;
 }
 
 .task-item {
