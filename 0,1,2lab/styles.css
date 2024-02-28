@@ -1,0 +1,202 @@
+/* Общие стили */
+html,
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background: #609b9b;
+    font-size: 20px;
+    text-align: center;
+    padding-bottom: 50px;
+    /* Высота футера */
+}
+
+footer {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    background-color: #333;
+    color: white;
+    padding: 10px 0;
+}
+
+/* Стили для основных секций */
+.head,
+.body {
+    color: white;
+    text-align: center;
+}
+
+/* Применяем анимацию к заголовку */
+@keyframes changeColor {
+    0% {
+        color: rgb(255, 255, 255);
+    }
+
+    50% {
+        color: rgb(0, 255, 255);
+    }
+
+    100% {
+        color: rgb(255, 255, 255);
+    }
+}
+
+/* Добавляем декоративный шрифт для заголовка */
+@font-face {
+    font-family: 'Vinque_Rg';
+    src: local('Vinque_Rg'),
+        url('Vinque_Rg.ttf'), format("ttf");
+}
+
+/* Стили для элементов внутри секций */
+.title {
+    font-family: 'Vinque_Rg';
+    animation: changeColor 2s infinite;
+
+    font-size: 48px;
+    margin-bottom: 20px;
+}
+
+.add-task {
+    padding: 10px;
+    margin: 0 auto;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.task {
+    display: inline-block;
+}
+
+.composite-header {
+    display: flex;
+    align-items: center;
+}
+
+.composite-header img {
+    width: 50px;
+    height: 50px;
+    margin-right: 10px;
+}
+
+/* Стили для отдельных элементов */
+.add-task input[type="text"],
+.add-task button {
+    padding: 10px;
+    margin: 0;
+    font-size: 20px;
+}
+
+.add-task input[type="text"] {
+    color: grey;
+    border: none;
+}
+
+.add-task button {
+    cursor: pointer;
+    border: none;
+}
+
+.filters {
+    margin-top: 20px;
+}
+
+.filter-link {
+    display: inline-block;
+    margin-right: 10px;
+    padding: 5px 10px;
+    border-radius: 5px;
+    background-color: #eee;
+    color: #333;
+    text-decoration: none;
+    transition: background-color 0.3s ease;
+}
+
+.filter-link:hover {
+    background-color: #ddd;
+}
+
+
+#taskList {
+    list-style-type: none;
+    padding: 0;
+}
+
+#taskList li {
+    display: flex;
+    color: #ffffff;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.completed {
+    text-decoration: line-through;
+}
+
+.completed-bg {
+    background-color: #166161c0;
+}
+
+.complete,
+.delete {
+    background-color: transparent;
+    border: none;
+    font-size: 24px;
+    cursor: pointer;
+    flex-shrink: 0;
+    margin: 5px 5px 5px 5px;
+    width: 30px;
+    height: 30px;
+}
+
+.complete::before {
+    content: "✓";
+    color: rgb(255, 255, 255);
+}
+
+.delete::before {
+    content: "✖️";
+}
+
+button.cleanAll {
+    background: #e25353;
+}
+
+button.addNew {
+    background: #d8d8d8;
+}
+
+/* Общие стили для select */
+select {
+    font-size: 20px;
+    padding: 9px;
+    border: 1px solid #ccc;
+    background-color: #fff;
+    color: #333;
+}
+
+.task-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.task-details {
+    flex-grow: 1;
+    width: 400px;
+}
+
+.task-text,
+.task-date {
+    text-align: left;
+}
