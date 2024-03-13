@@ -1,27 +1,6 @@
 const puppeteer = require('puppeteer');
 const readline = require('readline');
 
-// Создаем интерфейс для ввода данных с консоли
-const rl = readline.createInterface({
-    input: process.stdin,
-    output: process.stdout
-});
-
-// Функция для выбора вида расписания
-function chooseScheduleType() {
-    return new Promise((resolve, reject) => {
-        rl.question('Выберите тип расписания (краткий = 1/полный = 0): ', (answer) => {
-            if (answer === '1') {
-                resolve(1);
-            } else if (answer === '0') {
-                resolve(0);
-            } else {
-                reject(new Error('Пожалуйста, введите "1" для краткого расписания или "0" для полного'));
-            }
-        });
-    });
-}
-
 (async () => {
     const browser = await puppeteer.launch({ headless: false });
     const page = await browser.newPage();
@@ -32,7 +11,7 @@ function chooseScheduleType() {
     var direction = "A"; // Направление
     var scheduleType = "23"; // Тип расписания
     const stop = "603|18"; // Остановка
-    const scheduleTypeview = await chooseScheduleType();  // Вид расписания
+    const scheduleTypeview = "0";  // Вид расписания
 
     // Создаем URL с заданными параметрами
     var url = "https://nskgortrans.ru/components/com_planrasp/helpers/grasp.php?" +
@@ -83,7 +62,6 @@ function formatScheduleData(scheduleData, isFullSchedule) {
   
       // Если это полное расписание
       if (!isFullSchedule) {
-        console.log("полное");
         // Проходим по каждой паре час:минута в строке
         for (let i = 0; i < row.length; i += 2) {
           const hour = row[i];
@@ -99,18 +77,7 @@ function formatScheduleData(scheduleData, isFullSchedule) {
             formattedRow.push(`Нет автобуса в ${hour}:00`);
           }
         }
-      } else {
-        // Если это краткое расписание, каждый td содержит информацию о времени
-        console.log("краткое");
-        row.forEach(cell => {
-          // Исключаем ячейки с заголовками
-          if (!cell.includes('Остановка') && !cell.includes('Интервал')) {
-            formattedRow.push(cell.replace('<div>', '').replace('</div>', ''));
-          }
-        });
       }
-
-      console.log("выполнено");
 
       // Добавляем отформатированную строку в расписание
       formattedSchedule.push(formattedRow.join('; '));
