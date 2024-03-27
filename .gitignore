@@ -288,6 +288,7 @@ FakesAssemblies/
 .ntvs_analysis.dat
 node_modules/
 
+build/
 .idea/
 
 # Visual Studio 6 build log
