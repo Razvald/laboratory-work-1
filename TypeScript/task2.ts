@@ -25,18 +25,19 @@ type WithLevel = {
 }
 /* --- */
 
-type StudentCourse = Course & WithStudentRole & WithRate & WithLevel
-type Student = User2 & { courses: { [id: number]: StudentCourse } }
+type StudentCourse = Course & WithStudentRole & WithRate & WithLevel;
+type Student = User2 & { courses: { [id: number]: StudentCourse } };
 
-type TeacherCourse = Course & WithTeacherRole & WithLevel
-type Teacher = User & WithLevel & {
-    courses: { [id: number]: TeacherCourse }
-}
+type TeacherCourse = Course & WithTeacherRole;
+type TeacherCoursesDictionary = { [id: number]: TeacherCourse };
 
-type Director = User & {
-    students: { [id: string]: User },
-    teachers: { [id: string]: Teacher }
-}
+type Teacher = User2 & WithLevel & { courses: TeacherCoursesDictionary };
+
+type StudentDictionary = { [id: string]: User2 };
+type TeacherWithRate = Teacher & WithRate;
+type TeacherDictionary = { [id: string]: TeacherWithRate };
+
+type Director = User2 & { students: StudentDictionary; teachers: TeacherDictionary };
 
 /*--  Проверка  --*/
 const s1: Student = {
@@ -86,10 +87,12 @@ const d1: Director = {
             rate: 3,
         },
         ["t2"]: {
+            ...t1, // Я не знаю, опечатка это или нет, но в лабе этой строки не было, поэтому писало мне ошибку
             id: "t2",
             name: "t2",
             level: "senior",
-            rate: 5
+            rate: 5/*,
+            courses: {} // Если строка выше и правда не должна быть, тогда нужно прописать эту строку*/
         }
     }
 }
