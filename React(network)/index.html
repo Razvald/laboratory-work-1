@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="ru">
+<head>
+    <meta charset="utf-8">
+    <script src="https://unpkg.com/react@17/umd/react.production.min.js"></script>
+    <script src="https://unpkg.com/react-dom@17/umd/react-dom.production.min.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    <script type="text/babel">
+        function FormComponent() {
+            const [id, setId] = React.useState('');
+            const [post, setPost] = React.useState(null);
+            const [user, setUser] = React.useState(null);
+
+            const fetchData = async () => {
+                const postResponse = await fetch(`https://jsonplaceholder.typicode.com/posts/${id}`);
+                const postData = await postResponse.json();
+                setPost(postData);
+
+                const userResponse = await fetch(`https://jsonplaceholder.typicode.com/users/${postData.userId}`);
+                const userData = await userResponse.json();
+                setUser(userData);
+            };
+
+            return (
+                <div>
+                    <label>ID:</label>
+                    <input type="text" value={id} onChange={(e) => setId(e.target.value)} />
+                    <button onClick={fetchData}>Fetch Data</button>
+
+                    {post && user && (
+                        <div>
+                            <h2>Title: {post.title}</h2>
+                            <p>Body: {post.body}</p>
+                            <p>Name: {user.name}</p>
+                            <p>Email: {user.email}</p>
+                        </div>
+                    )}
+                </div>
+            );
+        }
+
+        ReactDOM.render(<FormComponent />, document.getElementById('root'));
+    </script>
+</head>
+<body>
+    <div id="root"></div>
+</body>
+</html>
