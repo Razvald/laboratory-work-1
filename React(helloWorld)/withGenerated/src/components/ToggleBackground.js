@@ -9,13 +9,13 @@ const ToggleBackground = () => {
 
   const style = {
     backgroundColor: isRed ? 'red' : 'green',
-    width: '100px',
-    height: '100px'
+    height: '10vh',
+    width: '10vh'
   };
 
   return (
-    <div style={style} onClick={toggleColor}>
-      Click me
+    <div style={style}>
+      <button onClick={toggleColor}>Toggle Background</button>
     </div>
   );
 };

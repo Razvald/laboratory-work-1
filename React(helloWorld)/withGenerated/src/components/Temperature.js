@@ -2,14 +2,9 @@ import React from 'react';
 
 const Temperature = ({ t }) => {
   const style = {
-    color: t >= 0 ? 'red' : 'blue'
+    color: t < 0 ? 'blue' : 'red'
   };
-
-  return (
-    <div style={style}>
-      {t}°C
-    </div>
-  );
+  return <div style={style}>{t}</div>;
 };
 
 export default Temperature;
